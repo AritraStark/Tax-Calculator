@@ -18,21 +18,29 @@
 
 <body>
     <div class="container-md my-4 border p-4 d-grid gap-2">
-        <form>
+        <form class="needs-validation" novalidate>
             <div class="mb-3">
-                <label for="annualIncome" class="form-label">Enter gross annual income <i class="bi bi-info-circle"
+                <label for="annualIncome" class="form-label">Enter gross annual income <i class="bi bi-question-circle"
                         data-bs-toggle="tooltip" data-bs-placement="top"
                         title="Gross annual income is your total salary in a year before deductions"></i></label>
-                <input type="number" class="form-control" id="annualIncome" aria-describedby="annualIncome">
+                <input type="text" class="form-control input-field" id="annualIncome" aria-describedby="annualIncome"
+                    placeholder="Enter gross annual income">
+                <div class="invalid-feedback">
+                    Please provide a valid numerical input.
+                </div>
             </div>
             <div class="mb-3">
-                <label for="extraIncome" class="form-label">Enter extra income <i class="bi bi-info-circle"
+                <label for="extraIncome" class="form-label">Enter extra income <i class="bi bi-question-circle"
                         data-bs-toggle="tooltip" data-bs-placement="top"
                         title="Extra income is your total extra income in a year apart from your salary before deductions"></i></label>
-                <input type="number" class="form-control" id="extraIncome">
+                <input type="text" class="form-control" id="extraIncome"
+                    placeholder="Enter extra income from other sources">
+                <div class="invalid-feedback">
+                    Please provide a valid numerical input.
+                </div>
             </div>
             <div class="mb-3">
-                <label for="age" class="form-label">Enter age group <i class="bi bi-info-circle"
+                <label for="age" class="form-label">Enter age group <i class="bi bi-question-circle"
                         data-bs-toggle="tooltip" data-bs-placement="top"
                         title="The age group you fall under currently"></i></label>
                 <select class="form-select" aria-label="Size 3 select example" id="age">
@@ -42,23 +50,29 @@
                     <option value="2"> >= 40 & < 60 </option>
                     <option value="3"> > 60</option>
                 </select>
+                <div class="invalid-feedback">
+                    Selecting an age group is mandatory.
+                </div>
             </div>
             <div class="mb-3">
                 <label for="deductableIncome" class="form-label">Enter total applicable deductions income <i
                         class="bi bi-info-circle" data-bs-toggle="tooltip" data-bs-placement="top"
                         title="Total applicable deductions income is your total deductable income apart from your salary in a year"></i></label>
-                <input type="number" class="form-control" id="deductableIncome">
+                <input type="text" class="form-control" id="deductableIncome"
+                    placeholder="Add total applicable deductions">
+                <div class="invalid-feedback">
+                    Please provide a valid numerical input.
+                </div>
             </div>
 
             <div class="mt-5 mb-4 d-grid">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                    id="submitButton">Submit</button>
+                <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
             </div>
 
         </form>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" role="dialog">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content p-5 m-4">
 

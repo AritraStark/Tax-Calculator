@@ -2,19 +2,19 @@ const form = document.getElementById('submitButton')
 
 let grossIncome = 0, tax = 0
 
+function isNumber(str) {
+    var pattern = /^\d+\.?\d*$/;
+    return pattern.test(str);
+}
+
 form.addEventListener("click", (e) => {
-    console.log("clicked")
     e.preventDefault();
+
     const annualIncome = document.getElementById('annualIncome').value
     const extraIncome = document.getElementById('extraIncome').value
     const age = document.getElementById('age').value
     const deductableIncome = document.getElementById('deductableIncome').value
     grossIncome = Number(annualIncome) + Number(extraIncome) - Number(deductableIncome)
-
-    console.log(annualIncome)
-    console.log(extraIncome)
-    console.log(deductableIncome)
-    console.log(age)
 
     if (grossIncome > 800000) {
         if (age == 1) {
@@ -27,11 +27,35 @@ form.addEventListener("click", (e) => {
             tax = 0.1 * grossIncome
         }
     }
-    console.log(tax)
     grossIncome -= tax
 
-    document.getElementById('result').innerHTML = grossIncome
+    if (isNumber(annualIncome) && isNumber(extraIncome) && age > 0 && isNumber(deductableIncome)) {
 
+        var myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
+            keyboard: false
+        })
+        myModal.show()
+    }
+    else if (isNumber(extraIncome) && age > 0 && isNumber(deductableIncome)) {
+        document.getElementById("annualIncome").classList.toggle("is-invalid")
+    }
+    else if (isNumber(annualIncome) && age > 0 && isNumber(deductableIncome)) {
+        document.getElementById("extraIncome").classList.toggle("is-invalid")
+    }
+    else if (isNumber(annualIncome) && age > 0 && isNumber(extraIncome)) {
+        document.getElementById("deductableIncome").classList.toggle("is-invalid")
+    }
+    else if (age == 0) {
+        document.querySelector(".form-select").classList.toggle("is-invalid")
+    }
+    else {
+        document.querySelectorAll(".form-control").forEach((i) => {
+            i.classList.toggle("is-invalid")
+        })
+        document.querySelector(".form-select").classList.toggle("is-invalid")
+    }
+
+    document.getElementById('result').innerHTML = grossIncome
 })
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -40,11 +64,4 @@ document.addEventListener("DOMContentLoaded", function () {
         return new bootstrap.Tooltip(element);
     });
 });
-
-// const myModal = document.getElementById('exampleModal')
-// const myInput = document.getElementById('myInput')
-
-// myModal.addEventListener('shown.bs.modal', () => {
-//     myInput.focus()
-// })
 

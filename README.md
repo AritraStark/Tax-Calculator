@@ -8,8 +8,8 @@ Completed Features:
         - 40% for people with age ≥ 40 but < 60
         - 10% for people with age ≥ 60
 - Do not restrict user from entering incorrect values like characters in the number fields
-    - Highlight a error icon to the right of the input field (shown as an example in above image as a circle with `!`). Hovering over it should show the error in a tooltip
-    - If no errors are present, dont show the error icon
+    - Highlight a error icon to the right of the input field (shown as an example in above image as a circle with `!`). 
+    - Used bootstrap form validation to highlight error messages
     - This should be present in all the number fields
 - The age dropdown field should have 3 values -
     - <40
@@ -24,3 +24,9 @@ Technologies used:
 - CSS
 - JavaScript
 - Bootstrap
+
+To run in local environment:
+- Download the repo contents or clone the repo on local device
+- Run index.html file
+
+This project is hosted live on https://aritrastark.github.io/Tax-Calculator/ using github-pages. 
